@@ -1,0 +1,76 @@
+﻿
+@{
+    ViewBag.Title = "ShoppingPrducts";
+}
+
+<h2>Prducts</h2>
+<style>
+    table, th, td {
+        border: 1px solid black;
+    }
+
+    #tblShoppingProducts td {
+        padding: 5px;
+    }
+</style>
+<script type="text/javascript">
+    var urlGetProductDetailsById = '@Url.Action("GetProductDetailsById", "Product")';
+    var urlUpdateProductDetailsById = '@Url.Action("UpdateProductDetails", "Product")'; 
+    var urlDeleteProductDetailsById = '@Url.Action("DeleteProductDetailsById", "Product")';
+</script>>
+<script src="~/Scripts/jquery-1.10.2.min.js"></script>
+<script src="~/Scripts/bootstrap.min.js"></script>
+<script src="~/Scripts/angular.min.js"></script>
+<script src="~/Scripts/Product.js"></script>
+
+<div ng-app="ProductApp" ng-controller="ProductController">
+    <div>
+        <table id="tblShoppingProducts">
+            <thead><tr>            <th>Product Name</th><th>Price</th><th>Product Description</th><th>Product Quality</th> <th></th><th></th></tr></thead>
+            <tbody>
+                <tr ng-repeat="product in Products">
+                    <td>{{product.ProductName}}</td>
+                    <td>{{product.Price}}</td>
+                    <td>{{product.ProductDescription}}</td>
+                    <td>{{product.ProductQuality}}</td>
+                    <td><button ng-click="GetAndDisplayProductDetails(product.ProductID)">Edit</button></td>
+                    <td><button ng-click="DeleteProductDetailsByID(product.ProductID)">Delete</button></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <div id="editForm" ng-show="isDisplyProductdetails">
+        <table>
+            <tr>
+                <td>ProductName</td>
+                <td><input type="text" id="ProductName" ng-model="ProductName" /></td>
+            </tr>
+            <tr>
+                <td>Product quality</td>
+                <td><input type="text" id="ProductQuality" ng-model="ProductQuality" /></td>
+            </tr>
+
+            <tr>
+                <td>Price</td>
+                <td><input type="text" id="Price" ng-model="Price" /></td>
+            </tr>
+            <tr>
+                <td>Description</td>
+                <td><input type="text" id="Description" ng-model="Description" /></td>
+            </tr>
+
+
+            <tr>
+                <td><button id="btnSubmit" ng-click="UpdateProductDetails()">Update</button></td>
+
+            </tr>
+        </table>
+    </div>
+</div>
+<script type="text/javascript">
+    var urlGetProductDetails = '@Url.Action("GetProductDetails", "Product")';
+
+    
+
+</script>
+

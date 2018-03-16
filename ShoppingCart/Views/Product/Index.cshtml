@@ -1,0 +1,67 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<div>
+
+
+
+    <h2>View</h2>
+
+    <h2>ProductDetails Form</h2>
+
+    <table>
+        <tr>
+            <td>ProductName</td>
+            <td><input type="text" id="ProductName" /></td> </tr>
+        <tr><td>Product quality</td>
+        <td><input type="text" id="ProductQuality" /></td> </tr>
+
+        <tr>
+            <td>Price</td>
+            <td><input type="text" id="Price" /></td>
+        </tr>
+        <tr>
+            <td>Description</td>
+            <td><input type="text" id="Description" /></td>
+        </tr>
+
+
+        <tr>
+            <td><button id="btnSubmit" onclick="ProductDetails()">Submit</button></td>
+
+        </tr>
+    </table>
+
+
+    <script type="text/javascript">
+
+        function ProductDetails() {
+        $.ajax({
+            url: "Product/SaveProductDetails",
+            type: 'GET',
+            data: {
+                ProductName: $("#ProductName").val(),
+                ProductQuality: $("#ProductQuality").val(),
+                Price: $("#Price").val(),
+                Description: $("#Description").val(),
+               
+            },
+            dataType: 'json',
+            contentType: 'application/json; charset=utf-8',
+            success: function (result) {
+                alert(result);
+                window.location.href = '/Product/Products/';
+
+            },
+            error: function (error) {
+                alert(error)
+            }
+        });
+    }
+
+    </script>
+</div>
