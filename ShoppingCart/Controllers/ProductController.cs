@@ -22,10 +22,6 @@ namespace ShoppingCart.Controllers
         [HttpGet]
         public JsonResult SaveProductDetails(string ProductName, string ProductQuality, int Price, string Description)
         {
-            List<string> Products = new List<string>() { "shirt", "tshirt" };
-
-            var tshirt = Products.Where(p => p == "tshirt").FirstOrDefault();
-
 
             string connctionString = System.Configuration.ConfigurationManager.ConnectionStrings["MyDBConnection"].ConnectionString;
             SqlConnection con = new SqlConnection(connctionString);
