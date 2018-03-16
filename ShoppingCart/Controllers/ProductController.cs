@@ -23,7 +23,7 @@ namespace ShoppingCart.Controllers
         public JsonResult SaveProductDetails(string ProductName, string ProductQuality, int Price, string Description)
         {
 
-
+            // form
             string connctionString = System.Configuration.ConfigurationManager.ConnectionStrings["MyDBConnection"].ConnectionString;
             SqlConnection con = new SqlConnection(connctionString);
 
